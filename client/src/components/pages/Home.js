@@ -1,6 +1,5 @@
 import React, {Fragment} from 'react'
-import {GuestForm} from '../guests'
-// import GuestCounter from '../guests/GuestCounter'
+import {GuestForm, GuestCounter} from '../guests'
 // import GuestFilter from '../guests/GuestFilter'
 // import GuestSearch from '../guests/GuestSearch'
 // import Guests from '../guests/Guests'
@@ -15,7 +14,7 @@ export const Home = () => {
           <GuestSearch /> */}
         </div>
         <GuestForm />
-        {/* <GuestCounter /> */}
+        <GuestCounter />
       </div>
       {/* <Guests /> */}
     </div>
