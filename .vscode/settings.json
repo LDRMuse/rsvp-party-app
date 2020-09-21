@@ -1,0 +1,31 @@
+{
+  "better-comments.highlightPlainText": true,
+  "css.validate": false,
+  "editor.accessibilitySupport": "off",
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  },
+  "editor.fontFamily": "'Victor Mono', 'Source Code Pro', Menlo, Monaco, 'Courier New', monospace",
+  "editor.fontLigatures": true,
+  "editor.minimap.enabled": false,
+  "editor.scrollBeyondLastColumn": 2,
+  "editor.smoothScrolling": true,
+  "editor.tabSize": 2,
+  "editor.wordWrap": "wordWrapColumn",
+  "editor.wordWrapColumn": 100,
+  "eslint.workingDirectories": [
+    "./client",
+    "./server"
+  ],
+  "files.autoSave": "onFocusChange",
+  "files.eol": "\n",
+  "files.insertFinalNewline": true,
+  "files.trimTrailingWhitespace": true,
+  "javascript.validate.enable": false,
+  "stylelint.enable": true,
+  "terminal.integrated.fontFamily": "'Inconsolata', monospace",
+  "workbench.colorTheme": "Material Theme",
+  "workbench.enableExperiments": false,
+  "workbench.iconTheme": "material-icon-theme",
+  "workbench.view.alwaysShowHeaderActions": true
+}
