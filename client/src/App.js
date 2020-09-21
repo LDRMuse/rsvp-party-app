@@ -5,11 +5,13 @@ import {Home, Navbar} from './components'
 
 function App() {
   return (
+
     <div>
     <Navbar />
     <Home />
       hello world
     </div>
+
   );
 }
 
