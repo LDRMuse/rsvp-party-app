@@ -3,11 +3,12 @@ import { library } from "@fortawesome/fontawesome-svg-core";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { fas } from "@fortawesome/free-solid-svg-icons";
 import { faEdit } from "@fortawesome/free-solid-svg-icons";
+import { faTrash } from "@fortawesome/free-solid-svg-icons";
 import { faCheckSquare } from "@fortawesome/free-solid-svg-icons";
 // adding font-awesome icons is tricky
 // faEdit for example, looks like fa-edit in fontawesome docs. you have to convert it to camelCase
 // solid, brands, regular are collections of icons ex: "@fortawesome/free-solid-svg-icons";
-library.add(fas, faEdit, faCheckSquare);
+library.add(fas, faEdit, faCheckSquare, faTrash);
 
 export const Guest = ({guest}) => {
   const {name, phone, dietary, isconfirmed} = guest
@@ -25,7 +26,7 @@ export const Guest = ({guest}) => {
           <FontAwesomeIcon icon="edit" className="icon"/>
           </button>
           <button>
-            <i className="delete"></i>
+          <FontAwesomeIcon icon="trash" className="icon"/>
           </button>
         </div>
       </div>
