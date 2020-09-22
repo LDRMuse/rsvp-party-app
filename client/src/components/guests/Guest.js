@@ -1,12 +1,13 @@
 import React from 'react'
 
-export const Guest = () => {
+export const Guest = ({guest}) => {
+  const {name, phone, dietary, isconfirmed} = guest
   return (
     <div className="guest-card">
       <div className="card-head">
         <div>
-          <label> Confirmed
-        <i className='fas fa-check-square '>
+          <label className={`${isconfirmed && 'confirm'}`}> Confirmed
+        <i className={`fas fa-check-square ${isconfirmed && 'confirm'}`}>
               <input type="checkbox" />
             </i>
           </label>
@@ -21,11 +22,11 @@ export const Guest = () => {
         </div>
       </div>
       <div className="card-body">
-        <h2>John Doe</h2>
-        <span className='badge red'>'Non-Veg'</span>
+        <h2>{name}</h2>
+        <span className={(dietary === 'Non-Veg' ? "has-text-danger-light has-background-danger-dark" : dietary === 'Vegan' ? 'has-text-success-light has-background-success-dark' : 'has-text-link-light has-background-link-dark')}>{dietary}</span>
         <div className="contact">
           <i className="fas fa-phone-alt" />
-          <p>444 333 7777</p>
+          <p>{phone}</p>
         </div>
       </div>
     </div>
