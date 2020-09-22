@@ -23,7 +23,7 @@ const initialState = {
       id: 3,
       name: "Melissa Heying",
       phone: "444-555-7777",
-      dietary: 'Pasccatarian',
+      dietary: 'Pescatarian',
       isconfirmed: false
     }
   ]
