@@ -2,7 +2,7 @@ import React from 'react'
 
 export const Navbar = () => {
   return (
-    <div className="navbar">
+    <div className="navbar has-background-success-dark">
       <div className="logo">
         <h1><i className='fas fa-glass-cheers' />
           Party RSVP
