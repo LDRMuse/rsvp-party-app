@@ -33,7 +33,8 @@ const [state, dispatch] = useReducer(guestReducer, initialState)
 
   return (
 
-
+// This is from the createContext hook
+//Use this component to pass the state
     <GuestContext.Provider
     value={{
 guests: state.guests
