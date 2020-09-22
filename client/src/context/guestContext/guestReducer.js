@@ -1,0 +1,16 @@
+import {TOGGLE_FILTER} from '../types'
+
+// reducer component to set/use state depending on type
+export const guestReducer = (state, {type, payload}) => {
+  switch(type) {
+    case TOGGLE_FILTER:
+      return{
+        ...state,
+        filterGuest: !state.filterGuest
+      }
+    default:
+    return state
+  }
+}
+
+
