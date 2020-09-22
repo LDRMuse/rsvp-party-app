@@ -8,23 +8,23 @@ const initialState = {
     {
       id: 1,
       name: "Melissa Heying",
-      phone: 444-555-7777,
+      phone: "444-555-7777",
       dietary: 'Non-Veg',
       isconfirmed: false
     },
     {
       id: 2,
       name: "Mike Heying",
-      phone: 444-555-7777,
+      phone: "444-555-7777",
       dietary: 'Vegan',
       isconfirmed: true
     },
     {
       id: 3,
       name: "Melissa Heying",
-      phone: 444-555-7777,
+      phone: "444-555-7777",
       dietary: 'Pasccatarian',
-      isconfirmed: true
+      isconfirmed: false
     }
   ]
 }

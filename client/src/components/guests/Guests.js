@@ -10,7 +10,7 @@ const {guests} = useContext(GuestContext)
 
   return (
     <div className="guests">
-    {guests.map(guest => <Guest key={guest.id}/>)}
+    {guests.map(guest => <Guest key={guest.id} guest={guest}/>)}
   </div>
   )
 }
