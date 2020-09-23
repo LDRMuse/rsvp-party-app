@@ -1,7 +1,7 @@
 import React, {useReducer} from 'react'
 import {GuestContext} from './GuestContext'
 import {guestReducer} from './guestReducer'
-import {TOGGLE_FILTER, SEARCH_GUEST, CLEAR_SEARCH, ADD_GUEST} from '../types'
+import {TOGGLE_FILTER, SEARCH_GUEST, CLEAR_SEARCH, ADD_GUEST, DELETE_GUEST} from '../types'
 
 
 export const GuestState = (props) => {
@@ -47,6 +47,14 @@ const addGuest = (guest) => {
   })
 }
 
+
+const deleteGuest = (id) => {
+    dispatch({
+      type: DELETE_GUEST,
+      payload: id
+    })
+  }
+
 // toggle on/off (starting at false) using guestReducer
 const toggleFilter = () => {
   dispatch({
@@ -77,6 +85,7 @@ guests: state.guests,
 filterGuest: state.filterGuest,
 search: state.search,
 addGuest,
+deleteGuest,
 toggleFilter,
 searchGuest,
 clearSearch

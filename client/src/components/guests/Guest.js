@@ -1,4 +1,6 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import { GuestContext } from '../../context'
+
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { fas } from "@fortawesome/free-solid-svg-icons";
@@ -11,23 +13,32 @@ import { faPhone } from "@fortawesome/free-solid-svg-icons";
 // solid, brands, regular are collections of icons ex: "@fortawesome/free-solid-svg-icons";
 library.add(fas, faEdit, faCheckSquare, faTrash, faPhone);
 
-export const Guest = ({guest}) => {
-  const {name, phone, dietary, isConfirmed} = guest
+
+export const Guest = ({ guest }) => {
+
+  const { deleteGuest } = useContext(GuestContext);
+
+  const handleRemove = () => {
+    deleteGuest(id)
+  }
+
+
+  const { name, phone, dietary, isConfirmed, id } = guest
   return (
     <div className="guest-card">
       <div className="card-head">
         <div>
           <label className={`${isConfirmed && 'confirm'}`}> Confirmed
         <FontAwesomeIcon className={`fas fa-check-square ${isConfirmed && 'confirm'}`} icon="check-square" />
-              <input type="checkbox" />
+            <input type="checkbox" />
           </label>
         </div>
         <div>
-          <button>
-          <FontAwesomeIcon icon="edit" className="icon"/>
+          <button className="button mr-4 pl-4 pr-4">
+            <FontAwesomeIcon icon="edit" className="icon" />
           </button>
-          <button>
-          <FontAwesomeIcon icon="trash" className="icon"/>
+          <button className="button mr-4 pl-4 pr-4" onClick={handleRemove}>
+            <FontAwesomeIcon icon="trash" className="icon" />
           </button>
         </div>
       </div>
@@ -35,7 +46,7 @@ export const Guest = ({guest}) => {
         <h2>{name}</h2>
         <span className={(dietary === 'Non-Veg' ? "has-text-danger-light has-background-danger-dark" : dietary === 'Vegan' ? 'has-text-success-light has-background-success-dark' : 'has-text-link-light has-background-link-dark')}>{dietary}</span>
         <div className="contact">
-        <FontAwesomeIcon icon="phone" className="icon"/>
+          <FontAwesomeIcon icon="phone" className="icon" />
           <i className="fas fa-phone" />
           <p>{phone}</p>
         </div>
