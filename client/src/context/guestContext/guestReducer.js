@@ -4,7 +4,7 @@ import {TOGGLE_FILTER, SEARCH_GUEST, CLEAR_SEARCH} from '../types'
 export const guestReducer = (state, {type, payload}) => {
   switch(type) {
     case SEARCH_GUEST:
-      const reg = new RegExp(`${payload}, 'gi`)
+      const reg = new RegExp(`${payload}`, 'gi')
       return{
         ...state,
         search: state.guests.filter(guest => guest.name.match(reg))
