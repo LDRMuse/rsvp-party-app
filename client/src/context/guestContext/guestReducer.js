@@ -1,8 +1,19 @@
-import {TOGGLE_FILTER} from '../types'
+import {TOGGLE_FILTER, SEARCH_GUEST, CLEAR_SEARCH} from '../types'
 
 // reducer component to set/use state depending on type
 export const guestReducer = (state, {type, payload}) => {
   switch(type) {
+    case SEARCH_GUEST:
+      const reg = new RegExp(`${payload}, 'gi`)
+      return{
+        ...state,
+        search: state.guests.filter(guest => guest.name.match(reg))
+      }
+    case CLEAR_SEARCH:
+      return{
+        ...state,
+        search: null
+      }
     case TOGGLE_FILTER:
       return{
         ...state,

@@ -1,15 +1,17 @@
 import React, {useReducer} from 'react'
 import {GuestContext} from './GuestContext'
 import {guestReducer} from './guestReducer'
-import {TOGGLE_FILTER} from '../types'
+import {TOGGLE_FILTER, SEARCH_GUEST, CLEAR_SEARCH} from '../types'
+
 
 export const GuestState = (props) => {
 const initialState = {
   filterGuest: false,
+  search: null,
   guests:[
     {
       id: 1,
-      name: "Melissa Heying",
+      name: "Blake Heying",
       phone: "444-555-7777",
       dietary: 'Non-Veg',
       isConfirmed: false
@@ -26,7 +28,7 @@ const initialState = {
       name: "Melissa Heying",
       phone: "444-555-7777",
       dietary: 'Pescatarian',
-      isConfirmed: false
+      isConfirmed: true
     }
   ]
 }
@@ -41,6 +43,17 @@ const toggleFilter = () => {
     type: TOGGLE_FILTER
   })
 }
+const searchGuest = (guest) => {
+  dispatch({
+    type: SEARCH_GUEST,
+    payload: guest
+  })
+}
+const clearGuest = () => {
+  dispatch({
+    type: CLEAR_SEARCH
+  })
+}
 
 console.log(state.filterGuest, 'hi')
 
@@ -52,7 +65,10 @@ console.log(state.filterGuest, 'hi')
     value={{
 guests: state.guests,
 filterGuest: state.filterGuest,
-toggleFilter
+search: state.search,
+toggleFilter,
+searchGuest,
+clearGuest
     }}>
       {props.children}
     </GuestContext.Provider>
