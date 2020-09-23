@@ -24,7 +24,7 @@ clearSearch()
   return (
     <div>
     <input ref={searchValue} type="text" onChange={handleChange} className="search" placeholder="Search Guest by name ..." />
-    <button className="button is-small"><FontAwesomeIcon icon="search" className="icon"/></button>
+    <FontAwesomeIcon icon="search" className="icon"/>
   </div>
   )
 }
