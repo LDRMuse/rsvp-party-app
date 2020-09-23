@@ -1,8 +1,8 @@
 import React, { useState, useContext } from 'react'
-import {GuestContext} from '../../context'
+import { GuestContext } from '../../context'
 
 export const GuestForm = () => {
-const { addGuest } = useContext(GuestContext)
+  const { addGuest } = useContext(GuestContext)
 
 
   const [guest, setGuest] = useState({
@@ -22,7 +22,9 @@ const { addGuest } = useContext(GuestContext)
 
   const onSubmit = (e) => {
     e.preventDefault()
-  addGuest(guest)
+    // addGuest comes from GuestState by useContext
+    addGuest(guest)
+    // after adding guest, reset to default below
     setGuest({
       name: '',
       phone: '',
