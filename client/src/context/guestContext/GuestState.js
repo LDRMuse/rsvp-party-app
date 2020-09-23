@@ -12,24 +12,27 @@ const initialState = {
       name: "Melissa Heying",
       phone: "444-555-7777",
       dietary: 'Non-Veg',
-      isconfirmed: false
+      isConfirmed: false
     },
     {
       id: 2,
       name: "Mike Heying",
       phone: "444-555-7777",
       dietary: 'Vegan',
-      isconfirmed: true
+      isConfirmed: true
     },
     {
       id: 3,
       name: "Melissa Heying",
       phone: "444-555-7777",
       dietary: 'Pescatarian',
-      isconfirmed: false
+      isConfirmed: false
     }
   ]
 }
+
+// useReducer takes 2 args guestReducer which is a function and initialState which is an object
+// the function takes the state, spreads it and adds filteredGuest(toggles who's confirmed)
 const [state, dispatch] = useReducer(guestReducer, initialState)
 
 // setState using dispatch
@@ -39,11 +42,10 @@ const toggleFilter = () => {
   })
 }
 
+console.log(state.filterGuest)
 
   return (
-
-// This is from the createContext hook
-//Use this component to pass the state/props
+// This is from the createContext hook; used to pass the state/props to another component
     <GuestContext.Provider
     value={{
 guests: state.guests,

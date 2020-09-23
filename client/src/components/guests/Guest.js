@@ -12,13 +12,13 @@ import { faPhone } from "@fortawesome/free-solid-svg-icons";
 library.add(fas, faEdit, faCheckSquare, faTrash, faPhone);
 
 export const Guest = ({guest}) => {
-  const {name, phone, dietary, isconfirmed} = guest
+  const {name, phone, dietary, isConfirmed} = guest
   return (
     <div className="guest-card">
       <div className="card-head">
         <div>
-          <label className={`${isconfirmed && 'confirm'}`}> Confirmed
-        <FontAwesomeIcon className={`fas fa-check-square ${isconfirmed && 'confirm'}`} icon="check-square" />
+          <label className={`${isConfirmed && 'confirm'}`}> Confirmed
+        <FontAwesomeIcon className={`fas fa-check-square ${isConfirmed && 'confirm'}`} icon="check-square" />
               <input type="checkbox" />
           </label>
         </div>
