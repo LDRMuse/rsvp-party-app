@@ -49,7 +49,7 @@ const searchGuest = (guest) => {
     payload: guest
   })
 }
-const clearGuest = () => {
+const clearSearch = () => {
   dispatch({
     type: CLEAR_SEARCH
   })
@@ -68,7 +68,7 @@ filterGuest: state.filterGuest,
 search: state.search,
 toggleFilter,
 searchGuest,
-clearGuest
+clearSearch
     }}>
       {props.children}
     </GuestContext.Provider>
