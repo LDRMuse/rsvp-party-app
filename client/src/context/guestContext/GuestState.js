@@ -1,7 +1,7 @@
 import React, {useReducer} from 'react'
 import {GuestContext} from './GuestContext'
 import {guestReducer} from './guestReducer'
-import {TOGGLE_FILTER, SEARCH_GUEST, CLEAR_SEARCH} from '../types'
+import {TOGGLE_FILTER, SEARCH_GUEST, CLEAR_SEARCH, ADD_GUEST} from '../types'
 
 
 export const GuestState = (props) => {
@@ -37,6 +37,16 @@ const initialState = {
 // the function takes the state, spreads it and adds filteredGuest(toggles who's confirmed)
 const [state, dispatch] = useReducer(guestReducer, initialState)
 
+const addGuest = (guest) => {
+  // Date.now( gives the guest an id)
+  guest.id = Date.now()
+  guest.isConfirmed = false
+  dispatch({
+    type: ADD_GUEST,
+    payload: guest
+  })
+}
+
 // toggle on/off (starting at false) using guestReducer
 const toggleFilter = () => {
   dispatch({
@@ -66,6 +76,7 @@ console.log(state.filterGuest, 'hi')
 guests: state.guests,
 filterGuest: state.filterGuest,
 search: state.search,
+addGuest,
 toggleFilter,
 searchGuest,
 clearSearch
