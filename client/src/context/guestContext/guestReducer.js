@@ -14,3 +14,7 @@ export const guestReducer = (state, {type, payload}) => {
 }
 
 
+//take the state and spread it, then add filterGuest;
+//if there is no state in filterGuest, then it is false
+//if there is state in filterGuest, then it is true
+// true displays when toggle is on

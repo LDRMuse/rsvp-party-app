@@ -7,7 +7,7 @@ export const Guests = () => {
 const {guests, filterGuest} = useContext(GuestContext)
 
 
-// take guests and filter each guest who is not a filtered guest (true) or if a guest is confirmed
+// take guests and filter each guest who is not a filterGuest (true) or if a guest is confirmed
   return (
     <div className="guests">
     {guests.filter(guest => !filterGuest || guest.isConfirmed).map(guest => <Guest key={guest.id} guest={guest}/>)}

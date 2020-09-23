@@ -35,17 +35,19 @@ const initialState = {
 // the function takes the state, spreads it and adds filteredGuest(toggles who's confirmed)
 const [state, dispatch] = useReducer(guestReducer, initialState)
 
-// setState using dispatch
+// toggle on/off (starting at false) using guestReducer
 const toggleFilter = () => {
   dispatch({
     type: TOGGLE_FILTER
   })
 }
 
-console.log(state.filterGuest)
+console.log(state.filterGuest, 'hi')
 
   return (
-// This is from the createContext hook; used to pass the state/props to another component
+// This is from the createContext hook; used to pass the state/props to any component;
+//just import {GuestContext} in any component
+
     <GuestContext.Provider
     value={{
 guests: state.guests,
