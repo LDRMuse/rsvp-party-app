@@ -1,6 +1,10 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
+import {GuestContext} from '../../context'
 
 export const GuestForm = () => {
+const { addGuest } = useContext(GuestContext)
+
+
   const [guest, setGuest] = useState({
     name: '',
     phone: '',
@@ -18,7 +22,7 @@ export const GuestForm = () => {
 
   const onSubmit = (e) => {
     e.preventDefault()
-    console.log(guest)
+  addGuest(guest)
     setGuest({
       name: '',
       phone: '',
