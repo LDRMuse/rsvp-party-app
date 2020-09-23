@@ -39,17 +39,19 @@ const toggleFilter = () => {
   })
 }
 
-console.log(state.filterGuest)
 
   return (
+
 // This is from the createContext hook
-//Use this component to pass the state
+//Use this component to pass the state/props
     <GuestContext.Provider
     value={{
 guests: state.guests,
-toggleFilter: state.filterGuest
+filterGuest: state.filterGuest,
+toggleFilter
     }}>
       {props.children}
     </GuestContext.Provider>
   )
 }
+
