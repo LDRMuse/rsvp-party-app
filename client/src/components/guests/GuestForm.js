@@ -54,7 +54,7 @@ export const GuestForm = () => {
 
   return (
     <div className="invite-section">
-      <h1>Invite Someone</h1>
+      <h1 className='title is-3'>{editGuestTable !== null ? 'Edit Guest' : 'Invite Someone' }</h1>
       <form onSubmit={onSubmit}>
         <input type="text" placeholder="Name" name="name" value={name} onChange={handleChange} />
         <input type="text" placeholder="Phone" name="phone" value={phone} onChange={handleChange} />
@@ -72,8 +72,8 @@ export const GuestForm = () => {
         <input type="radio" name="dietary" value='Pescatarian' checked={dietary === 'Pescatarian'} onChange={handleChange} />
             <span className="checkmark"></span>
           </label>
-        </div>
-        <input type="submit" value="Add Guest" className="btn" />
+        </div>{editGuestTable !== null ? <input type="submit" value="Edit Guest" className="btn" /> : <input type="submit" value="Add Guest" className="btn" /> }
+
       </form>
     </div>
   )
