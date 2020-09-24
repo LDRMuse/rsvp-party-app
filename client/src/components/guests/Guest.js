@@ -16,7 +16,7 @@ library.add(fas, faEdit, faCheckSquare, faTrash, faPhone);
 
 export const Guest = ({ guest }) => {
 
-  const { deleteGuest, updateGuest } = useContext(GuestContext);
+  const { deleteGuest, updateGuest, editGuest } = useContext(GuestContext);
 
   const handleRemove = () => {
     deleteGuest(id)
@@ -28,6 +28,10 @@ export const Guest = ({ guest }) => {
 updateGuest({...guest, isConfirmed: !isConfirmed})
   }
 
+  // puts the new values of the guest in the guest table (guestForm)
+  const handleEdit = () => {
+    editGuest(guest)
+  }
 
   const { name, phone, dietary, isConfirmed, id } = guest
   return (
@@ -40,7 +44,7 @@ updateGuest({...guest, isConfirmed: !isConfirmed})
           </label>
         </div>
         <div>
-          <button className="button mr-4 pl-4 pr-4">
+          <button className="button mr-4 pl-4 pr-4" onClick={handleEdit}>
             <FontAwesomeIcon icon="edit" className="icon" />
           </button>
           <button className="button mr-4 pl-4 pr-4" onClick={handleRemove}>

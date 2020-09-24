@@ -1,15 +1,28 @@
-import React, { useState, useContext } from 'react'
+import React, { useState, useContext, useEffect } from 'react'
 import { GuestContext } from '../../context'
 
 export const GuestForm = () => {
-  const { addGuest } = useContext(GuestContext)
-
+  const { addGuest, editGuestTable } = useContext(GuestContext)
 
   const [guest, setGuest] = useState({
     name: '',
     phone: '',
     dietary: 'Non-Veg'
   })
+
+  // if editGuestTable is not null, then set the guest to the user's input
+  useEffect(() => {
+    if (editGuestTable !== null) {
+      setGuest(editGuestTable)
+    } else {
+    setGuest({
+      name: '',
+      phone: '',
+      dietary: 'Non-Veg'
+    })
+    }
+  }, [editGuestTable])
+
 
   const { name, phone, dietary } = guest
 
