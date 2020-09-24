@@ -2,7 +2,7 @@ import React, {useReducer} from 'react'
 import {GuestContext} from './GuestContext'
 import {guestReducer} from './guestReducer'
 import {
-  TOGGLE_FILTER, SEARCH_GUEST, CLEAR_SEARCH, ADD_GUEST, DELETE_GUEST, UPDATE_GUEST
+  TOGGLE_FILTER, SEARCH_GUEST, CLEAR_SEARCH, ADD_GUEST, DELETE_GUEST, UPDATE_GUEST, EDIT_GUEST, CLEAR_EDIT
 } from '../types'
 
 
@@ -10,6 +10,7 @@ export const GuestState = (props) => {
 const initialState = {
   filterGuest: false,
   search: null,
+  editGuestTable: null,
   guests:[
     {
       id: 1,
@@ -82,20 +83,34 @@ const clearSearch = () => {
   })
 }
 
-console.log(state.filterGuest, 'hi')
+const editGuest = (guest) => {
+  dispatch({
+    type: EDIT_GUEST,
+    payload: guest
+  })
+}
+
+const clearEdit = () => {
+  dispatch({
+    type: CLEAR_EDIT
+  })
+}
 
   return (
 // This is from the createContext hook; used to pass the state/props to any component;
-//just import {GuestContext} in any component
+//just import {GuestContext} in any component to use
 
     <GuestContext.Provider
     value={{
 guests: state.guests,
 filterGuest: state.filterGuest,
 search: state.search,
+editGuestTable: state.editGuestTable,
 addGuest,
 updateGuest,
 deleteGuest,
+editGuest,
+clearEdit,
 toggleFilter,
 searchGuest,
 clearSearch

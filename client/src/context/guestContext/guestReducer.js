@@ -1,5 +1,5 @@
 import {
-  TOGGLE_FILTER, SEARCH_GUEST, CLEAR_SEARCH, ADD_GUEST, DELETE_GUEST, UPDATE_GUEST
+  TOGGLE_FILTER, SEARCH_GUEST, CLEAR_SEARCH, ADD_GUEST, DELETE_GUEST, UPDATE_GUEST, EDIT_GUEST, CLEAR_EDIT
 } from '../types'
 
 // reducer component to set/use state depending on type
@@ -22,6 +22,18 @@ export const guestReducer = (state, {type, payload}) => {
             ...state,
             guests: state.guests.map(guest => guest.id === payload.id ? payload : guest)
           }
+          // this is used update the table with the users input(payload)
+          case EDIT_GUEST:
+            return{
+              ...state,
+              editGuestTable: payload
+            }
+            // this returns the table back to null
+            case CLEAR_EDIT:
+            return{
+              ...state,
+              editGuestTable: null
+            }
     case SEARCH_GUEST:
       const reg = new RegExp(`${payload}`, 'gi')
       return{
