@@ -2,7 +2,7 @@ import React, { useState, useContext, useEffect } from 'react'
 import { GuestContext } from '../../context'
 
 export const GuestForm = () => {
-  const { addGuest, editGuestTable } = useContext(GuestContext)
+  const { addGuest, editGuestTable, updateGuest, clearEdit } = useContext(GuestContext)
 
   const [guest, setGuest] = useState({
     name: '',
@@ -15,11 +15,11 @@ export const GuestForm = () => {
     if (editGuestTable !== null) {
       setGuest(editGuestTable)
     } else {
-    setGuest({
-      name: '',
-      phone: '',
-      dietary: 'Non-Veg'
-    })
+      setGuest({
+        name: '',
+        phone: '',
+        dietary: 'Non-Veg'
+      })
     }
   }, [editGuestTable])
 
@@ -35,14 +35,21 @@ export const GuestForm = () => {
 
   const onSubmit = (e) => {
     e.preventDefault()
-    // addGuest comes from GuestState by useContext
-    addGuest(guest)
-    // after adding guest, reset to default below
-    setGuest({
-      name: '',
-      phone: '',
-      dietary: 'Non-Veg'
-    })
+    //update current guest instead of adding extra current guest
+    if (editGuestTable !== null) {
+      updateGuest(guest)
+      clearEdit()
+      // else add new guest
+    } else {
+      // addGuest comes from GuestState by useContext
+      addGuest(guest)
+      // after adding guest, reset to default below
+      setGuest({
+        name: '',
+        phone: '',
+        dietary: 'Non-Veg'
+      })
+    }
   }
 
   return (
