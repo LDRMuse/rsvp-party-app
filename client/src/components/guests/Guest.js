@@ -16,10 +16,16 @@ library.add(fas, faEdit, faCheckSquare, faTrash, faPhone);
 
 export const Guest = ({ guest }) => {
 
-  const { deleteGuest } = useContext(GuestContext);
+  const { deleteGuest, updateGuest } = useContext(GuestContext);
 
   const handleRemove = () => {
     deleteGuest(id)
+  }
+
+  // take a copy of guest (...)
+  // create new object that gets triggered onChange when the checkbox is clicked
+  const handleIsConfirmed = () => {
+updateGuest({...guest, isConfirmed: !isConfirmed})
   }
 
 
@@ -30,7 +36,7 @@ export const Guest = ({ guest }) => {
         <div>
           <label className={`${isConfirmed && 'confirm'}`}> Confirmed
         <FontAwesomeIcon className={`fas fa-check-square ${isConfirmed && 'confirm'}`} icon="check-square" />
-            <input type="checkbox" />
+            <input type="checkbox" onChange={handleIsConfirmed} />
           </label>
         </div>
         <div>

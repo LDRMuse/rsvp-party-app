@@ -56,6 +56,7 @@ const deleteGuest = (id) => {
     })
   }
 
+// for isConfirmed
   const updateGuest = (guest) => {
     dispatch({
       type: UPDATE_GUEST,
