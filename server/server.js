@@ -2,7 +2,9 @@
 const express = require('express')
 const dotenv = require('dotenv');
 
-
+//connect ot DB
+const connectDB = require('./config/db')
+connectDB()
 
 const app = express()
 dotenv.config();
