@@ -1,7 +1,9 @@
 import React, {useReducer} from 'react'
 import {GuestContext} from './GuestContext'
 import {guestReducer} from './guestReducer'
-import {TOGGLE_FILTER, SEARCH_GUEST, CLEAR_SEARCH, ADD_GUEST, DELETE_GUEST} from '../types'
+import {
+  TOGGLE_FILTER, SEARCH_GUEST, CLEAR_SEARCH, ADD_GUEST, DELETE_GUEST, UPDATE_GUEST
+} from '../types'
 
 
 export const GuestState = (props) => {
@@ -47,11 +49,17 @@ const addGuest = (guest) => {
   })
 }
 
-
 const deleteGuest = (id) => {
     dispatch({
       type: DELETE_GUEST,
       payload: id
+    })
+  }
+
+  const updateGuest = (guest) => {
+    dispatch({
+      type: UPDATE_GUEST,
+      payload: guest
     })
   }
 
@@ -85,6 +93,7 @@ guests: state.guests,
 filterGuest: state.filterGuest,
 search: state.search,
 addGuest,
+updateGuest,
 deleteGuest,
 toggleFilter,
 searchGuest,
