@@ -58,11 +58,11 @@ export const GuestForm = () => {
             <span className="checkmark"></span>
           </label>
           <label className="container">Vegan
-        <input type="radio" name="dietary" value='Vegan' onChange={handleChange} />
+        <input type="radio" name="dietary" value='Vegan' checked={dietary === 'Vegan'} onChange={handleChange} />
             <span className="checkmark"></span>
           </label>
-          <label className="container">Pascatarian
-        <input type="radio" name="dietary" value='Pesacatarian' onChange={handleChange} />
+          <label className="container">Pescatarian
+        <input type="radio" name="dietary" value='Pescatarian' checked={dietary === 'Pescatarian'} onChange={handleChange} />
             <span className="checkmark"></span>
           </label>
         </div>
