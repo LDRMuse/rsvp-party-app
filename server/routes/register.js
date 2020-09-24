@@ -1,6 +1,7 @@
 const router = require('express').Router()
 const { check, validationResult } = require('express-validator')
 const bcrypt = require('bcrypt')
+const jwt = require('jsonwebtoken')
 
 
 // use model
@@ -26,7 +27,7 @@ router.post('/',
     try {
       let user = await User.findOne({ email })
       if (user) {
-        return res.status(400).json(message: 'User already exists')
+        return res.status(400).json({message: 'User already exists'})
       }
       user = new User({
         name,
@@ -37,9 +38,21 @@ router.post('/',
       user.password = await bcrypt.hash(password, salt)
       await user.save()
 
-
+      const payload = {
+        user: {
+          id: user.id
+        }
+      }
+      //assigning and generating a token
+      jwt.sign(payload, process.env.SECRET, {
+        expiresIn:3600
+      }, (err, token) => {
+        if(err) throw err
+        res.send({ token })
+      })
     } catch (error) {
-      console.error(error)
+      console.error(error.message)
+      res.status(500).send('Server Error')
     }
   })
 
