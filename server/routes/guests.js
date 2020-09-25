@@ -74,7 +74,7 @@ router.put('/:id', auth, async (req, res) => {
     if (!guest) {
       return res.status(404).json({ message: 'Guest not found' })
     }
-    guest = await Guest.findByIdAndUpdate(req.params.id, ($set: updatedGuest), { new: true })
+    guest = await Guest.findByIdAndUpdate(req.params.id, {$set: updatedGuest}, { new: true })
     res.send(guest)
   } catch (error) {
     console.error(error.message)
