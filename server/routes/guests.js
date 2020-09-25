@@ -46,4 +46,25 @@ router.get('/', auth, async (req, res) => {
     })
 })
 
+//delete guest
+router.delete('/:id', auth, async (req, res) => {
+  // if there is no guest, do this
+  try {
+    let guest = await Guest.findById(req.params.id)
+    if (!guest) {
+      return res.status(404).json({ message: 'Guest not found' })
+    }
+    // if there is a guest, find them and remove
+    await Guest.findByIdAndRemove(req.params.id)
+    res.send('Removed Guest')
+  } catch (error) {
+    // if server error, do this
+    console.error(error.message)
+    res.status(500).send('Server Error')
+  }
+})
+
+
+
+
 module.exports = router
