@@ -2,10 +2,26 @@ const router = require('express').Router()
 const { check, validationResult } = require('express-validator')
 const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
+const auth = require('../middleWare/auth')
 
 
 // use model
 const User = require('../models/user')
+
+// auth is protecting this route
+router.get('/', auth, async (req, res) => {
+try {
+  const user = await User.findById(req.user.id).select("-password")
+  res.json(user)
+} catch (error) {
+  console.error(error.message)
+ res.status(500).send('Server Error')
+}
+})
+
+
+
+
 
 
 //authentication for email and password
