@@ -20,7 +20,6 @@ router.post('/',
     if (!errors.isEmpty()) {
       return res.status(400).json({ error: errors.array() })
     }
-    res.send('Success')
     const { name, email, password } = req.body
     // if a user exists, 'User already exists'
     // else, make a new user
