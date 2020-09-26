@@ -9,10 +9,8 @@ export const Login = () => {
 
       <input type="email" name="email" placeholder="Email"/>
       <input type="password" name="password" placeholder="Password"/>
-
-      <input type="submit" value="Sign In"/>
+      <input className='button is-success' type="submit" value="Sign In"/>
     </form>
-
     <div className="question">
       <p>Create Account? {" "} <Link to="/register">Register</Link></p>
     </div>
