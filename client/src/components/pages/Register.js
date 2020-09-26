@@ -60,7 +60,7 @@ export const Register = () => {
 
       <div className="question">
         {/* If there are errors */}
-        {errors !== null && <button className='danger'>
+        {errors !== null && <button className='is-danger'>
           {/*
         - first error message below is an error were sending back w/ json
         - second error is from express-validator error.array()
