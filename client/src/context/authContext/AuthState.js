@@ -26,19 +26,46 @@ export const AuthState = (props) => {
     try {
       const res = await axios.post('/register', userData, config)
       dispatch({
-
+        type: SUCCESS_REGISTER,
+        payload: res
       })
     } catch (error) {
-
+      dispatch({
+        type: FAIL_REGISTER,
+        payload: error.response.data
+      })
     }
   }
 
+    // login user using axios
+    const loginUser = async (userData) => {
+      const config = {
+        header: {
+          'Content-Type': 'application/json'
+        }
+      }
+      //res is going to send userData and config to the /register route
+      try {
+        const res = await axios.post('/auth', userData, config)
+        dispatch({
+          type: SUCCESS_LOGIN,
+          payload: res
+        })
+      } catch (error) {
+        dispatch({
+          type: FAIL_LOGIN,
+          payload: error.response.data
+        })
+      }
+    }
 
 
   return (
     <AuthContext.Provider value={{
       userAuth: state.userAuth,
-      errors: state.errors
+      errors: state.errors,
+      registerUser,
+      loginUser
     }}>
       {props.children}
     </AuthContext.Provider>
