@@ -50,7 +50,7 @@ router.post('/',
         res.send({ token })
       })
     } catch (error) {
-      console.error(error.message)
+      console.error(error.msg)
       res.status(500).send('Server Error')
     }
   })

@@ -14,7 +14,7 @@ try {
   const user = await User.findById(req.user.id).select("-password")
   res.json(user)
 } catch (error) {
-  console.error(error.message)
+  console.error(error.msg)
  res.status(500).send('Server Error')
 }
 })
@@ -39,11 +39,11 @@ router.post('/',
     try {
       let user = await User.findOne({ email })
       if (!user) {
-        return res.status(400).json({message: 'Invalid credentials'})
+        return res.status(400).json({msg: 'Invalid credentials'})
       }
 const match = await bcrypt.compare(password, user.password)
 if (!match) {
-  return res.status(400).json({message: 'Invalid credentials'})
+  return res.status(400).json({msg: 'Invalid credentials'})
 }
       const payload = {
         user: {
@@ -58,7 +58,7 @@ if (!match) {
         res.send({ token })
       })
     } catch (error) {
-      console.error(error.message)
+      console.error(error.msg)
       res.status(500).send('Server Error')
     }
   })

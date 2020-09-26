@@ -13,7 +13,7 @@ router.get('/', auth, async (req, res) => {
     const guests = await Guest.find({ user: req.user.id })
     res.json(guests)
   } catch (error) {
-    console.error(error.message)
+    console.error(error.msg)
     res.status(500).send('Server Error')
   }
 
@@ -40,7 +40,7 @@ router.get('/', auth, async (req, res) => {
         guest = await guest.save()
         res.json(guest)
       } catch (error) {
-        console.error(error.message)
+        console.error(error.msg)
         res.status(500).send('Server Error')
       }
     })
@@ -52,14 +52,14 @@ router.delete('/:id', auth, async (req, res) => {
   try {
     let guest = await Guest.findById(req.params.id)
     if (!guest) {
-      return res.status(404).json({ message: 'Guest not found' })
+      return res.status(404).json({ msg: 'Guest not found' })
     }
     // if there is a guest, find them and remove
     await Guest.findByIdAndRemove(req.params.id)
     res.send('Removed Guest')
   } catch (error) {
     // if server error, do this
-    console.error(error.message)
+    console.error(error.msg)
     res.status(500).send('Server Error')
   }
 })
@@ -72,12 +72,12 @@ router.put('/:id', auth, async (req, res) => {
   try {
     let guest = await Guest.findById(req.params.id)
     if (!guest) {
-      return res.status(404).json({ message: 'Guest not found' })
+      return res.status(404).json({ msg: 'Guest not found' })
     }
     guest = await Guest.findByIdAndUpdate(req.params.id, {$set: updatedGuest}, { new: true })
     res.send(guest)
   } catch (error) {
-    console.error(error.message)
+    console.error(error.msg)
     res.status(500).send('Server Error')
   }
 })

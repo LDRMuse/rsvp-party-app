@@ -43,12 +43,12 @@ export const Login = () => {
       </form>
       <div className="question">
         {/* If there are errors */}
-        {errors !== null && <button className='is-danger'>
+        {errors !== null && <button className='button is-danger'>
           {/*
         - first error message below is an error were sending back w/ json
         - second error is from express-validator error.array()
         */}
-          {errors.message ? errors.message : errors.error[0].message}
+          {errors.msg ? errors.msg : errors.error[0].msg}
           <span>X</span></button>}
         <p>Create Account? {" "} <Link to="/register">Register</Link></p>
       </div>
