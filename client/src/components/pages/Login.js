@@ -49,7 +49,7 @@ export const Login = () => {
         - second error is from express-validator error.array()
         */}
           {errors.msg ? errors.msg : errors.error[0].msg}
-          <span>X</span></button>}
+          ...X</button>}
         <p>Create Account? {" "} <Link to="/register">Register</Link></p>
       </div>
     </div>
