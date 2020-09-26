@@ -31,7 +31,7 @@ export const Login = () => {
         />
         <input
         type="password"
-        name="password2"
+        name="password"
         placeholder="Password"
         value={password}
         onChange={handleChange}
