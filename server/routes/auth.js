@@ -19,11 +19,6 @@ try {
 }
 })
 
-
-
-
-
-
 //authentication for email and password
 router.post('/',
   [
@@ -54,6 +49,7 @@ if (!match) {
       jwt.sign(payload, process.env.SECRET, {
         expiresIn:3600
       }, (err, token) => {
+
         if(err) throw err
         res.send({ token })
       })

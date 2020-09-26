@@ -27,7 +27,7 @@ export const AuthState = (props) => {
       const res = await axios.post('/register', userData, config)
       dispatch({
         type: SUCCESS_REGISTER,
-        payload: res
+        payload: res.data
       })
     } catch (error) {
       dispatch({
