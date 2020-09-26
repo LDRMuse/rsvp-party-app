@@ -47,7 +47,7 @@ export const Register = () => {
         />
         <input
         type="password"
-        name="password"
+        name="password2"
         placeholder=" Re-enter Password"
         value={password2}
         onChange={handleChange}
