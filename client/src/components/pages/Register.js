@@ -10,7 +10,7 @@ export const Register = () => {
         <input type="email" name="email" placeholder="Email"/>
         <input type="password" name="password" placeholder="Password"/>
         <input type="password" name="password" placeholder=" Re-enter Password"/>
-        <input type="submit" value="Sign Up"/>
+        <input className='button is-success' type="submit" value="Sign Up"/>
       </form>
 
       <div className="question">
