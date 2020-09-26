@@ -1,7 +1,10 @@
-import React, {useState} from 'react'
+import React, { useState, useContext } from 'react'
 import { Link } from 'react-router-dom'
+import AuthContext from '../../context/authContext/AuthContext'
 
 export const Login = () => {
+  const { loginUser, userAuth, errors } = useContext(AuthContext)
+
   const [user, setUser] = useState({ email: '', password: '' })
   //pass email and password as a value in input tag
   const { email, password } = user
@@ -39,6 +42,14 @@ export const Login = () => {
         <input className='button is-success' type="submit" value="Sign In" />
       </form>
       <div className="question">
+        {/* If there are errors */}
+        {errors !== null && <button className='danger'>
+          {/*
+        - first error message below is an error were sending back w/ json
+        - second error is from express-validator error.array()
+        */}
+          {errors.message ? errors.message : errors.error[0].message}
+          <span>X</span></button>}
         <p>Create Account? {" "} <Link to="/register">Register</Link></p>
       </div>
     </div>
