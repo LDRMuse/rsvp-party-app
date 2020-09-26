@@ -14,7 +14,7 @@ export const Login = () => {
     </form>
 
     <div className="question">
-      <p>Create Account? {" "} <Link to="/login">Register</Link></p>
+      <p>Create Account? {" "} <Link to="/register">Register</Link></p>
     </div>
   </div>
   )
