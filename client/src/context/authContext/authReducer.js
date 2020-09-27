@@ -1,4 +1,4 @@
-import { SUCCESS_REGISTER, SUCCESS_LOGIN, FAIL_REGISTER, FAIL_LOGIN } from '../types'
+import { SUCCESS_REGISTER, SUCCESS_LOGIN, FAIL_REGISTER, FAIL_LOGIN, SET_ERROR } from '../types'
 
 export const authReducer = (state, action) => {
   switch (action.type) {
@@ -9,6 +9,11 @@ export const authReducer = (state, action) => {
         ...state,
         userAuth: true,
         errors: null
+      }
+    case SET_ERROR:
+      return {
+        ...state,
+        errors: action.payload
       }
     case FAIL_REGISTER:
     case FAIL_LOGIN:

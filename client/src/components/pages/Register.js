@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import AuthContext from '../../context/authContext/AuthContext'
 
 export const Register = () => {
-  const { registerUser, userAuth, errors } = useContext(AuthContext)
+  const { registerUser, userAuth, errors, setError } = useContext(AuthContext)
 
   const [user, setUser] = useState({ name: '', email: '', password: '', password2: '' })
   const { name, email, password, password2 } = user
@@ -17,7 +17,7 @@ export const Register = () => {
   const handleSubmit = (e) => {
     e.preventDefault()
     if (password !== password2) {
-      console.log("password doesn't match")
+      setError({msg: "Passwords don't match"})
     } else {
       registerUser({ name, email, password })
     }
