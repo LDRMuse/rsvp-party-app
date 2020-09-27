@@ -49,7 +49,7 @@ export const AuthState = (props) => {
         const res = await axios.post('/auth', userData, config)
         dispatch({
           type: SUCCESS_LOGIN,
-          payload: res
+          payload: res.data
         })
       } catch (error) {
         dispatch({
