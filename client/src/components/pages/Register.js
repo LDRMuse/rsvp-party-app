@@ -66,7 +66,7 @@ export const Register = () => {
         - second error is from express-validator error.array()
         */}
           {errors.msg ? errors.msg : errors.error[0].msg}
-          ...X</button>}
+          {" "}X</button>}
         <p>Already have an account? {" "} <Link to="/login">Login</Link></p>
       </div>
     </div>
