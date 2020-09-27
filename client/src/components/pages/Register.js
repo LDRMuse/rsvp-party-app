@@ -1,9 +1,14 @@
-import React, { useState, useContext } from 'react'
+import React, { useState, useContext, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import AuthContext from '../../context/authContext/AuthContext'
 
-export const Register = () => {
+export const Register = (props) => {
   const { registerUser, userAuth, errors, setError, clearError } = useContext(AuthContext)
+  useEffect(() => {
+    if (userAuth) {
+      props.history.push('/')
+    }
+  }, [userAuth, props.history])
 
   const [user, setUser] = useState({ name: '', email: '', password: '', password2: '' })
   const { name, email, password, password2 } = user
@@ -18,7 +23,7 @@ export const Register = () => {
   const handleSubmit = (e) => {
     e.preventDefault()
     if (password !== password2) {
-      setError({msg: "Passwords don't match..."})
+      setError({ msg: "Passwords don't match..." })
     } else {
       registerUser({ name, email, password })
       clearError()

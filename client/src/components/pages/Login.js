@@ -1,9 +1,14 @@
-import React, { useState, useContext } from 'react'
+import React, { useState, useContext, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import AuthContext from '../../context/authContext/AuthContext'
 
-export const Login = () => {
+export const Login = (props) => {
   const { loginUser, userAuth, errors, clearError } = useContext(AuthContext)
+  useEffect(() => {
+    if (userAuth) {
+      props.history.push('/')
+    }
+  }, [userAuth, props.history])
 
   const [user, setUser] = useState({ email: '', password: '' })
   //pass email and password as a value in input tag
