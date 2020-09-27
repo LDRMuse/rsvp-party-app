@@ -4,7 +4,7 @@ import axios from 'axios'
 import AuthContext from './AuthContext'
 import { authReducer } from './authReducer'
 
-import { SUCCESS_REGISTER, SUCCESS_LOGIN, FAIL_REGISTER, FAIL_LOGIN, SET_ERROR } from '../types'
+import { SUCCESS_REGISTER, SUCCESS_LOGIN, FAIL_REGISTER, FAIL_LOGIN, SET_ERROR, CLEAR_ERROR } from '../types'
 
 export const AuthState = (props) => {
   const initialState = {
@@ -65,6 +65,11 @@ export const AuthState = (props) => {
       payload: error
     })
   }
+  const clearError = () => {
+    dispatch({
+      type: CLEAR_ERROR
+    })
+  }
 
 
   return (
@@ -73,7 +78,8 @@ export const AuthState = (props) => {
       errors: state.errors,
       registerUser,
       loginUser,
-      setError
+      setError,
+      clearError
     }}>
       {props.children}
     </AuthContext.Provider>

@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import AuthContext from '../../context/authContext/AuthContext'
 
 export const Register = () => {
-  const { registerUser, userAuth, errors, setError } = useContext(AuthContext)
+  const { registerUser, userAuth, errors, setError, clearError } = useContext(AuthContext)
 
   const [user, setUser] = useState({ name: '', email: '', password: '', password2: '' })
   const { name, email, password, password2 } = user
@@ -12,16 +12,20 @@ export const Register = () => {
     e.preventDefault()
     //targeting the name="name" for all 4 values
     setUser({ ...user, [e.target.name]: e.target.value })
+    clearError()
   }
 
   const handleSubmit = (e) => {
     e.preventDefault()
     if (password !== password2) {
-      setError({msg: "Passwords don't match"})
+      setError({msg: "Passwords don't match..."})
     } else {
       registerUser({ name, email, password })
+      clearError()
     }
   }
+
+
 
   return (
     <div className="register">
@@ -66,7 +70,7 @@ export const Register = () => {
         - second error is from express-validator error.array()
         */}
           {errors.msg ? errors.msg : errors.error[0].msg}
-          {" "}X</button>}
+          <span className='button is-danger' onClick={() => clearError()}>X</span></button>}
         <p>Already have an account? {" "} <Link to="/login">Login</Link></p>
       </div>
     </div>

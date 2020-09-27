@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import AuthContext from '../../context/authContext/AuthContext'
 
 export const Login = () => {
-  const { loginUser, userAuth, errors } = useContext(AuthContext)
+  const { loginUser, userAuth, errors, clearError } = useContext(AuthContext)
 
   const [user, setUser] = useState({ email: '', password: '' })
   //pass email and password as a value in input tag
@@ -13,11 +13,13 @@ export const Login = () => {
     e.preventDefault()
     //targeting the name="name" for all 4 values
     setUser({ ...user, [e.target.name]: e.target.value })
+    clearError()
   }
 
   const handleSubmit = (e) => {
     e.preventDefault()
     loginUser({ email, password })
+    clearError()
   }
 
 
@@ -49,7 +51,7 @@ export const Login = () => {
         - second error is from express-validator error.array()
         */}
           {errors.msg ? errors.msg : errors.error[0].msg}
-          {" "}X</button>}
+          <span className='button is-danger' onClick={() => clearError()}>X</span></button>}
         <p>Create Account? {" "} <Link to="/register">Register</Link></p>
       </div>
     </div>
