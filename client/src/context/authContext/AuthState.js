@@ -31,7 +31,7 @@ export const AuthState = (props) => {
     } catch (error) {
       dispatch({
         type: AUTH_ERROR,
-        payload: error.res.data
+        payload: error
       })
     }
   }
