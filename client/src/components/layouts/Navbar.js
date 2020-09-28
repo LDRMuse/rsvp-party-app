@@ -1,14 +1,39 @@
-import React, {useContext} from 'react'
+import React, { useContext, Fragment } from 'react'
 import AuthContext from '../../context/authContext/AuthContext'
+import { Link } from 'react-router-dom'
 
 export const Navbar = () => {
-const { logoutUser, clearError } = useContext(AuthContext)
+  const { logoutUser, clearError, userAuth } = useContext(AuthContext)
 
-const onLogout = () => {
-  logoutUser()
-  clearError()
-}
+  const onLogout = () => {
+    logoutUser()
+    clearError()
+  }
 
+  const authLinks = (
+    <Fragment>
+      <li>Hello, LDRMuse</li>
+      <span className="sm-hide">|</span>
+      <li>
+        <a href="#!">
+          <span className="has-text-light button has-background-link-dark" onClick={onLogout}>Logout</span>
+          <i className="fas fa-sign-out-alt"></i>
+        </a>
+      </li>
+    </Fragment>
+  )
+
+  const guestLinks = (
+    <Fragment>
+      <li>
+        <Link to='/register'>Register</Link>
+      </li>
+      <span className="sm-hide">|</span>
+      <li>
+        <Link to='/login'>Login</Link>
+      </li>
+    </Fragment>
+  )
 
   return (
     <div className="navbar has-background-success-dark">
@@ -19,14 +44,7 @@ const onLogout = () => {
         <p>Made with <span>❤</span> by LDRMuse</p>
       </div>
       <ul>
-        <li>Hello, LDRMuse</li>
-        <span className="sm-hide">|</span>
-        <li>
-          <a href="#!">
-            <span className="has-text-light button has-background-link-dark" onClick={onLogout}>Logout</span>
-            <i className="fas fa-sign-out-alt"></i>
-          </a>
-        </li>
+        {userAuth ? authLinks : guestLinks}
       </ul>
     </div>
   )
