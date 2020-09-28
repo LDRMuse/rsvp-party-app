@@ -15,3 +15,5 @@ export const PrivateRoute = ({ component: Component, ...rest }) => {
 
 //this sets up a private route so that no one can get to the home page unless logged in
 // and when logged out, it redirects you to the login page (/login)
+// this says is there no user ?, then redirect to login
+//OR stay here in this component (Home) with the users props
