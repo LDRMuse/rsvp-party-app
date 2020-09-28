@@ -10,14 +10,12 @@ export const Navbar = () => {
     clearError()
   }
 
+      //TODO: Fix bug, user cannot log out when clicking button;
   const authLinks = (
     <Fragment>
       <li className='box mr-3'>Hello, {user && user.name}</li>
       <li>
-        <a href="#!" onClick={onLogout}>
-          <span className="mb-3 mt-3 has-text-light button has-background-link-dark">Logout</span>
-          <i className="fas fa-sign-out-alt"></i>
-        </a>
+        <Link to='/login' className="mb-3 mt-3 has-text-light button has-background-link-dark" onClick={onLogout}>Logout</Link>
       </li>
     </Fragment>
   )

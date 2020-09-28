@@ -29,12 +29,13 @@ export const authReducer = (state, action) => {
       }
     case FAIL_REGISTER:
     case FAIL_LOGIN:
-    case LOG_OUT:
     case AUTH_ERROR:
+    case LOG_OUT:
       localStorage.removeItem('token')
       return {
         ...state,
         userAuth: null,
+        user: null,
         errors: action.payload
       }
     default:
