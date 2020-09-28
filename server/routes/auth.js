@@ -5,7 +5,7 @@ const jwt = require('jsonwebtoken')
 const auth = require('../middleWare/auth')
 
 
-// use model
+// user model
 const User = require('../models/user')
 
 // auth is protecting this route
