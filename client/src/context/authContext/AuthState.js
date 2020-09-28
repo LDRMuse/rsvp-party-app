@@ -4,16 +4,37 @@ import axios from 'axios'
 import AuthContext from './AuthContext'
 import { authReducer } from './authReducer'
 
-import { SUCCESS_REGISTER, SUCCESS_LOGIN, FAIL_REGISTER, FAIL_LOGIN, SET_ERROR, CLEAR_ERROR, LOG_OUT } from '../types'
+import {SetToken as setToken} from '../../utils'
+
+import { SUCCESS_REGISTER, SUCCESS_LOGIN, FAIL_REGISTER, FAIL_LOGIN, SET_ERROR, CLEAR_ERROR, LOG_OUT, GET_USER, AUTH_ERROR } from '../types'
 
 export const AuthState = (props) => {
   const initialState = {
+    user: null,
     userAuth: null,
     errors: null
   }
 
   const [state, dispatch] = useReducer(authReducer, initialState)
 
+  // get user
+  const getUser = async () => {
+    if (localStorage.token) {
+      setToken(localStorage.token)
+    }
+    try {
+      const res = await axios.get('/auth')
+      dispatch({
+        type: GET_USER,
+        payload: res.data
+      })
+    } catch (error) {
+      dispatch({
+        type: AUTH_ERROR,
+        payload: error.res.data
+      })
+    }
+  }
 
   // register user using axios
   const registerUser = async (userData) => {
@@ -81,8 +102,10 @@ export const AuthState = (props) => {
 
   return (
     <AuthContext.Provider value={{
+      user: state.user,
       userAuth: state.userAuth,
       errors: state.errors,
+      getUser,
       registerUser,
       loginUser,
       setError,

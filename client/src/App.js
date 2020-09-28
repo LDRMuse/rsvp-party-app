@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import { Home, Navbar, Register, Login, PrivateRoute } from './components'
 import { GuestState } from './context';
 import { AuthState } from './context/authContext'
-import { setToken } from './src/utils/setToken'
+import { SetToken as setToken } from './utils'
 
 // see if token is sitting in local storage
 // if there is a token, then call this and pass token to setToken to the header in axios

@@ -3,7 +3,7 @@ import AuthContext from '../../context/authContext/AuthContext'
 import { Link } from 'react-router-dom'
 
 export const Navbar = () => {
-  const { logoutUser, clearError, userAuth } = useContext(AuthContext)
+  const { logoutUser, clearError, userAuth, user } = useContext(AuthContext)
 
   const onLogout = () => {
     logoutUser()
@@ -12,7 +12,7 @@ export const Navbar = () => {
 
   const authLinks = (
     <Fragment>
-      <li className='box mr-3'>Hello, LDRMuse</li>
+      <li className='box mr-3'>Hello, {user && user.nameÏ}</li>
       <li>
         <a href="#!">
           <span className="mb-3 mt-3 has-text-light button has-background-link-dark" onClick={onLogout}>Logout</span>
