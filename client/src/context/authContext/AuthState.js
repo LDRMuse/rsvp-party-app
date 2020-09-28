@@ -4,7 +4,7 @@ import axios from 'axios'
 import AuthContext from './AuthContext'
 import { authReducer } from './authReducer'
 
-import { SUCCESS_REGISTER, SUCCESS_LOGIN, FAIL_REGISTER, FAIL_LOGIN, SET_ERROR, CLEAR_ERROR } from '../types'
+import { SUCCESS_REGISTER, SUCCESS_LOGIN, FAIL_REGISTER, FAIL_LOGIN, SET_ERROR, CLEAR_ERROR, LOG_OUT } from '../types'
 
 export const AuthState = (props) => {
   const initialState = {
@@ -59,6 +59,13 @@ export const AuthState = (props) => {
     }
   }
 
+  // logout User
+  const logoutUser = () => {
+    dispatch({
+      type: LOG_OUT
+    })
+  }
+
   const setError = (error) => {
     dispatch({
       type: SET_ERROR,
@@ -79,7 +86,8 @@ export const AuthState = (props) => {
       registerUser,
       loginUser,
       setError,
-      clearError
+      clearError,
+      logoutUser
     }}>
       {props.children}
     </AuthContext.Provider>

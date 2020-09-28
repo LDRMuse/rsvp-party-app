@@ -1,4 +1,4 @@
-import { SUCCESS_REGISTER, SUCCESS_LOGIN, FAIL_REGISTER, FAIL_LOGIN, SET_ERROR, CLEAR_ERROR } from '../types'
+import { SUCCESS_REGISTER, SUCCESS_LOGIN, FAIL_REGISTER, FAIL_LOGIN, SET_ERROR, CLEAR_ERROR, LOG_OUT } from '../types'
 
 export const authReducer = (state, action) => {
   switch (action.type) {
@@ -22,6 +22,8 @@ export const authReducer = (state, action) => {
       }
     case FAIL_REGISTER:
     case FAIL_LOGIN:
+    case LOG_OUT:
+      localStorage.removeItem('token')
       return {
         ...state,
         userAuth: null,
