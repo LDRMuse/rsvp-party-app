@@ -12,11 +12,10 @@ export const Navbar = () => {
 
   const authLinks = (
     <Fragment>
-      <li>Hello, LDRMuse</li>
-      <span className="sm-hide">|</span>
+      <li className='box mr-3'>Hello, LDRMuse</li>
       <li>
         <a href="#!">
-          <span className="has-text-light button has-background-link-dark" onClick={onLogout}>Logout</span>
+          <span className="mb-3 mt-3 has-text-light button has-background-link-dark" onClick={onLogout}>Logout</span>
           <i className="fas fa-sign-out-alt"></i>
         </a>
       </li>
@@ -26,11 +25,10 @@ export const Navbar = () => {
   const guestLinks = (
     <Fragment>
       <li>
-        <Link to='/register'>Register</Link>
+        <Link to='/register' className='box mr-3'>Register</Link>
       </li>
-      <span className="sm-hide">|</span>
       <li>
-        <Link to='/login'>Login</Link>
+        <Link to='/login' className="mb-3 mt-3 has-text-light button has-background-link-dark">Login</Link>
       </li>
     </Fragment>
   )
