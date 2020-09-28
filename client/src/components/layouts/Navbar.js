@@ -14,7 +14,7 @@ export const Navbar = () => {
         <span className="sm-hide">|</span>
         <li>
           <a href="#!">
-            <span className="sm-hide">Logout</span>
+            <span className="sm-hide has-text-light has-background-link-dark">Logout</span>
             <i className="fas fa-sign-out-alt"></i>
           </a>
         </li>

@@ -4,7 +4,7 @@ import {GuestForm, GuestCounter, GuestFilter, GuestSearch, Guests } from '../gue
 
 export const Home = () => {
   return (
-    <Fragment>HOMEEEE
+    <Fragment>
     <div className="app-container">
       <div className="main">
         <div className="filter">
