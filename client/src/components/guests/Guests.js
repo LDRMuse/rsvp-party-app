@@ -1,15 +1,19 @@
-import React, {useContext} from 'react'
+import React, {useContext, useEffect} from 'react'
 import {GuestContext} from '../../context'
 import {Guest} from './Guest'
 
 export const Guests = () => {
   //guests was passed from GuestState with useContext hook
-const {guests, filterGuest, search} = useContext(GuestContext)
+const {guests, filterGuest, search, getGuest} = useContext(GuestContext)
 
+useEffect(() => {
+  getGuest()
+  // eslint-disable-next-line
+}, [])
 
   return (
     <div className="guests">
-    { search !== null ? search.map(guest => <Guest key={guest.id} guest={guest}/>) :
+    {search !== null ? search.map(guest => <Guest key={guest.id} guest={guest}/>) :
       guests.filter(guest => !filterGuest || guest.isConfirmed).map(guest => <Guest key={guest.id} guest={guest}/>)}
   </div>
   )

@@ -27,12 +27,12 @@ export const GuestState = (props) => {
       const res = await axios.get('/guests')
       dispatch({
         type: GET_GUEST,
-        payload: res
+        payload: res.data
       })
-    } catch (error) {
+    } catch (err) {
       dispatch({
         type: GUEST_ERROR,
-        payload: error.response.msg
+        payload: err.response.msg
       })
     }
   }

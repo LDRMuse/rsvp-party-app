@@ -4,6 +4,7 @@ import {GuestContext} from '../../context'
 
 export const GuestCounter = () => {
 const {guests} = useContext(GuestContext)
+
 const totalInvited = guests.length
 //filtering out if a guest isConfirmed true
 const attending = guests.filter(guest => guest.isConfirmed)
