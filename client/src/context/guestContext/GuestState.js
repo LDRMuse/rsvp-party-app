@@ -55,11 +55,19 @@ export const GuestState = (props) => {
     }
   }
 
-  const deleteGuest = (id) => {
-    dispatch({
-      type: DELETE_GUEST,
-      payload: id
-    })
+  const deleteGuest = async (id) => {
+    try {
+      await axios.delete(`/guests/${id}`)
+      dispatch({
+        type: DELETE_GUEST,
+        payload: id
+      })
+    } catch (err) {
+      dispatch({
+        type: GUEST_ERROR,
+        payload: err.response.msg
+      })
+    }
   }
 
   // for isConfirmed

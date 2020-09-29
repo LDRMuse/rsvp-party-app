@@ -13,8 +13,8 @@ useEffect(() => {
 
   return (
     <div className="guests">
-    {search !== null ? search.map(guest => <Guest key={guest.id} guest={guest}/>) :
-      guests.filter(guest => !filterGuest || guest.isConfirmed).map(guest => <Guest key={guest.id} guest={guest}/>)}
+    {search !== null ? search.map(guest => <Guest key={guest._id} guest={guest}/>) :
+      guests.filter(guest => !filterGuest || guest.isConfirmed).map(guest => <Guest key={guest._id} guest={guest}/>)}
   </div>
   )
 }

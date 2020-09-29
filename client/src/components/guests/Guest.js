@@ -19,7 +19,7 @@ export const Guest = ({ guest }) => {
   const { deleteGuest, updateGuest, editGuest } = useContext(GuestContext);
 
   const handleRemove = () => {
-    deleteGuest(id)
+    deleteGuest(_id)
   }
 
   // take a copy of guest (...)
@@ -33,7 +33,7 @@ updateGuest({...guest, isConfirmed: !isConfirmed})
     editGuest(guest)
   }
 
-  const { name, phone, dietary, isConfirmed, id } = guest
+  const { name, phone, dietary, isConfirmed, _id } = guest
   return (
     <div className="guest-card">
       <div className="card-head">
