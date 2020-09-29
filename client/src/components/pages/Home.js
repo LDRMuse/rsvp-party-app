@@ -9,8 +9,8 @@ export const Home = () => {
 
   useEffect(() => {
     getUser()
-    // disables for next time (only run this effect 1x)
-  }, [getUser])
+    // eslint-disable-next-line
+  }, [])
 
   return (
     <Fragment>

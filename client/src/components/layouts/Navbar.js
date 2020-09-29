@@ -10,7 +10,6 @@ export const Navbar = () => {
     clearError()
   }
 
-      //TODO: Fix bug, user cannot log out when clicking button;
   const authLinks = (
     <Fragment>
       <li className='box mr-3'>Hello, {user && user.name}</li>
