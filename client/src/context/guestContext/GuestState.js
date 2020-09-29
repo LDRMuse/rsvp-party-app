@@ -71,11 +71,22 @@ export const GuestState = (props) => {
   }
 
   // for isConfirmed
-  const updateGuest = (guest) => {
-    dispatch({
-      type: UPDATE_GUEST,
-      payload: guest
-    })
+  const updateGuest = async (guest) => {
+    const config = {
+      "Content-Type": "application/json"
+    }
+    const res = await axios.put(`/guests/${guest._id}`, guest, config)
+    try {
+      dispatch({
+        type: UPDATE_GUEST,
+        payload: res.data
+      })
+    } catch (error) {
+      dispatch({
+        type: GUEST_ERROR,
+        payload: error.response.msg
+      })
+    }
   }
 
   // toggle on/off (starting at false) using guestReducer
