@@ -19,13 +19,13 @@ export const guestReducer = (state, { type, payload }) => {
     case DELETE_GUEST:
       return {
         ...state,
-        guests: state.guests.filter(guest => guest.id !== payload)
+        guests: state.guests.filter(guest => guest._id !== payload)
       }
     // update the guest where the guest.id and payload.id matches OR keep guest
     case UPDATE_GUEST:
       return {
         ...state,
-        guests: state.guests.map(guest => guest.id === payload.id ? payload : guest)
+        guests: state.guests.map(guest => guest._id === payload._id ? payload : guest)
       }
     // this is used update the table with the users input(payload)
     case EDIT_GUEST:
